@@ -1,0 +1,407 @@
+<?xml version="1.0"?>
+<robot name="fanuc_crx10ia" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  
+  
+
+  <!-- ================= BASE LINK ================= -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/base_link.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/base_link.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ================= LINK 1 ================= -->
+  <link name="link_1">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/link_1.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/link_1.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ================= LINK 2 ================= -->
+  <link name="link_2">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/link_2.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/link_2.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ================= LINK 3 ================= -->
+  <link name="link_3">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/link_3.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/link_3.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ================= LINK 4 ================= -->
+  <link name="link_4">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/link_4.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/link_4.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ================= LINK 5 ================= -->
+  <link name="link_5">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/link_5.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/link_5.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ================= LINK 6 ================= -->
+  <link name="link_6">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/link_6.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/link_6.stl"
+              scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ================= JOINTS ================= -->
+  <joint name="joint_1" type="revolute">
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <origin xyz="0 0 0.245" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14159" upper="3.14159" effort="10" velocity="2.094"/>
+  </joint>
+
+  <joint name="joint_2" type="revolute">
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.14159" upper="3.14159" effort="10" velocity="2.094"/>
+  </joint>
+
+  <joint name="joint_3" type="revolute">
+    <parent link="link_2"/>
+    <child link="link_3"/>
+    <origin xyz="0 0 0.710" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-4.71239" upper="4.71239" effort="10" velocity="3.14159"/>
+  </joint>
+
+  <joint name="joint_4" type="revolute">
+    <parent link="link_3"/>
+    <child link="link_4"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <axis xyz="-1 0 0"/>
+    <limit lower="-3.31613" upper="3.31613" effort="10" velocity="3.14159"/>
+  </joint>
+
+  <joint name="joint_5" type="revolute">
+    <parent link="link_4"/>
+    <child link="link_5"/>
+    <origin xyz="0.540 -0.150 0" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-3.14159" upper="3.14159" effort="10" velocity="3.14159"/>
+  </joint>
+
+  <joint name="joint_6" type="revolute">
+    <parent link="link_5"/>
+    <child link="link_6"/>
+    <origin xyz="0.160 0 0" rpy="0 0 0"/>
+    <axis xyz="-1 0 0"/>
+    <limit lower="-3.31613" upper="3.31613" effort="10" velocity="3.14159"/>
+  </joint>
+
+  <!-- ================= FRAMES ================= -->
+  <link name="base"/>
+  <joint name="base_link-base" type="fixed">
+    <parent link="base_link"/>
+    <child link="base"/>
+    <origin xyz="0 0 0.245" rpy="0 0 0"/>
+  </joint>
+
+  <link name="flange"/>
+  <joint name="joint_6-flange" type="fixed">
+    <parent link="link_6"/>
+    <child link="flange"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+<!-- ================= ROBOTIQ GRIPPER ================= -->
+  <link name="tool0"/>
+  <joint name="link_6-tool0" type="fixed">
+    <parent link="flange"/>
+    <child link="tool0"/>
+    <origin xyz="0 0 0" rpy="3.14159265 -1.57079633 0"/>
+  </joint>
+  <link name="robotiq_85_adapter_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_adapter_plate.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="1.5707 0 1.5707" xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_adapter_plate.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="0 0 1.5707" xyz="0 0 0"/>
+    </collision>
+  </link>
+  <joint name="robotiq_85_base_joint" type="fixed">
+    <parent link="robotiq_85_adapter_link"/>
+    <child link="robotiq_85_base_link"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz=".0085 0 -.0041"/>
+  </joint>
+  <link name="robotiq_85_base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_base.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="3.1415 0 1.5707" xyz="0 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_base.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="1.5707 0 1.5707" xyz="0 0 0"/>
+    </collision>
+  </link>
+  <joint name="robotiq_85_left_knuckle_joint" type="revolute">
+    <parent link="robotiq_85_base_link"/>
+    <child link="robotiq_85_left_knuckle_link"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="-1.5707 1.5707 0" xyz=".04191 .0306 0"/>
+    <limit effort="10" lower="0" upper=".8575" velocity="2.0"/>
+  </joint>
+  <joint name="robotiq_85_right_knuckle_joint" type="revolute">
+    <parent link="robotiq_85_base_link"/>
+    <child link="robotiq_85_right_knuckle_link"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="1.5707 -1.5707 0" xyz=".04191 -.0306 0"/>
+    <limit effort="10" lower="0" upper="1.5707" velocity="2.0"/>
+    <mimic joint="robotiq_85_left_knuckle_joint" multiplier="1"/>
+  </joint>
+  <link name="robotiq_85_left_knuckle_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_0_L.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="3.14159 -1.5707 0" xyz="0 .04191 -.0306"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_0_L.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="1.5707 -1.5707 0" xyz="0 .04191 -.0306"/>
+    </collision>
+  </link>
+  <link name="robotiq_85_right_knuckle_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_0_R.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="3.14159 1.5707 0" xyz="0 .04191 -.0306"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_0_R.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="1.5707 1.5707 0" xyz="0 .04191 -.0306"/>
+    </collision>
+  </link>
+  <joint name="robotiq_85_left_finger_joint" type="fixed">
+    <parent link="robotiq_85_left_knuckle_link"/>
+    <child link="robotiq_85_left_finger_link"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="3.1415 0 0" xyz="0 .00508 .03134"/>
+    <limit effort="10" lower="0" upper="1.5707" velocity="2.0"/>
+  </joint>
+  <joint name="robotiq_85_right_finger_joint" type="fixed">
+    <parent link="robotiq_85_right_knuckle_link"/>
+    <child link="robotiq_85_right_finger_link"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="3.1415 0 0" xyz="0 .00508 .03134"/>
+    <limit effort="10" lower="0" upper="1.5707" velocity="2.0"/>
+  </joint>
+  <link name="robotiq_85_left_finger_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_1_L.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="0 1.5707 0" xyz="0 -.03683 .06194"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_1_L.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="-1.5707 1.5707 0" xyz="0 -.03683 .06194"/>
+    </collision>
+  </link>
+  <link name="robotiq_85_right_finger_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_1_R.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="0 -1.5707 0" xyz="0 -.03683 .06194"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_1_R.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="-1.5707 -1.5707 0" xyz="0 -.03683 .06194"/>
+    </collision>
+  </link>
+  <joint name="robotiq_85_left_inner_knuckle_joint" type="revolute">
+    <parent link="robotiq_85_base_link"/>
+    <child link="robotiq_85_left_inner_knuckle_link"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="1.5707 1.5707 0" xyz=".04843 .0127 0"/>
+    <limit effort="10" lower="0" upper="1.5707" velocity="2.0"/>
+    <mimic joint="robotiq_85_left_knuckle_joint" offset="0"/>
+  </joint>
+  <joint name="robotiq_85_right_inner_knuckle_joint" type="revolute">
+    <parent link="robotiq_85_base_link"/>
+    <child link="robotiq_85_right_inner_knuckle_link"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="-1.5707 -1.5707 0" xyz=".04843 -.0127 0"/>
+    <limit effort="10" lower="0" upper="1.5707" velocity="2.0"/>
+    <mimic joint="robotiq_85_left_knuckle_joint" offset="0"/>
+  </joint>
+  <link name="robotiq_85_left_inner_knuckle_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_2_L.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="0 1.5707 0" xyz="0 -.04843 .0127"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_2_L.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="-1.5707 1.5707 0" xyz="0 -.04843 .0127"/>
+    </collision>
+  </link>
+  <link name="robotiq_85_right_inner_knuckle_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_2_R.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="0 -1.5707 0" xyz="0 -.04843 .0127"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_2_R.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="-1.5707 -1.5707 0" xyz="0 -.04843 .0127"/>
+    </collision>
+  </link>
+  <joint name="robotiq_85_left_finger_tip_joint" type="revolute">
+    <parent link="robotiq_85_left_inner_knuckle_link"/>
+    <child link="robotiq_85_left_finger_tip_link"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0 .04196 -.0388"/>
+    <limit effort="10" lower="0" upper="1.5707" velocity="2.0"/>
+    <mimic joint="robotiq_85_left_knuckle_joint" multiplier="-1"/>
+  </joint>
+  <joint name="robotiq_85_right_finger_tip_joint" type="revolute">
+    <parent link="robotiq_85_right_inner_knuckle_link"/>
+    <child link="robotiq_85_right_finger_tip_link"/>
+    <axis xyz="1 0 0"/>
+    <origin rpy="0 0 0" xyz="0 .04196 -.0388"/>
+    <limit effort="10" lower="0" upper="1.5707" velocity="2.0"/>
+    <mimic joint="robotiq_85_left_knuckle_joint" multiplier="-1"/>
+  </joint>
+  <link name="robotiq_85_left_finger_tip_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_3_L.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="0 1.5707 0" xyz="0 -.090381 .051505"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_3_L.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="-1.5707 1.5707 0" xyz="0 -.090381 .051505"/>
+    </collision>
+  </link>
+  <link name="robotiq_85_right_finger_tip_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_3_R.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="0 -1.5707 0" xyz="0 -.090381 .051505"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://fanuc_crx10ia_support/meshes/robotiq_85_gripper_joint_3_R.dae" scale="1 1 1"/>
+      </geometry>
+      <origin rpy="-1.5707 -1.5707 0" xyz="0 -.090381 .051505"/>
+    </collision>
+  </link>
+
+
+  <joint name="tool0_to_gripper" type="fixed">
+  <parent link="tool0"/>
+  <child link="robotiq_85_adapter_link"/>
+  <origin xyz="0 0 0" rpy="0 0 0"/>
+  
+  </joint>
+
+</robot>

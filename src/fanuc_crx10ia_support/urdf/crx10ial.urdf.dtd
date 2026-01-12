@@ -1,0 +1,16 @@
+<!ELEMENT robot (property,link+,joint+)>
+<!ATTLIST robot name NMTOKEN #REQUIRED>
+<!ELEMENT property EMPTY>
+<!ATTLIST property name NMTOKEN #REQUIRED>
+<!ATTLIST property value NMTOKEN #REQUIRED>
+<!ELEMENT link (visual?,collision?)>
+<!ATTLIST link name ID #REQUIRED>
+<!ELEMENT visual (origin?,geometry)>
+<!ELEMENT origin EMPTY>
+<!ATTLIST origin xyz CDATA #REQUIRED>
+<!ATTLIST origin rpy CDATA #REQUIRED>
+<!ELEMENT geometry (mesh)>
+<!ELEMENT mesh EMPTY>
+<!ATTLIST mesh filename CDATA #REQUIRED>
+<!ATTLIST mesh scale CDATA #FIXED "${mesh_scale} ${mesh_scale} ${mesh_scale}"><!ELEMENT collision (origin?,geometry)><!ELEMENT joint (parent,child,origin,axis?,limit?)><!ATTLIST joint name NMTOKEN #REQUIRED><!ATTLIST joint type NMTOKEN #REQUIRED><!ELEMENT parent EMPTY><!ATTLIST parent link NMTOKEN #REQUIRED><!ELEMENT child EMPTY><!ATTLIST child link NMTOKEN #REQUIRED><!ELEMENT axis EMPTY><!ATTLIST axis xyz CDATA #REQUIRED><!ELEMENT limit EMPTY><!ATTLIST limit lower NMTOKEN #REQUIRED><!ATTLIST limit upper NMTOKEN #REQUIRED><!ATTLIST limit effort NMTOKEN #FIXED "0">
+<!ATTLIST limit velocity NMTOKEN #REQUIRED>
